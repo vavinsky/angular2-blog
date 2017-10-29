@@ -1,0 +1,11 @@
+<div class="container" *ngIf="tag">
+    <div class="row">
+        <div class="col-sm-12 blog-main">
+            <div>
+                <h2>About {{tag.name}}</h2>
+                <div [innerHtml]="tag.description | keepHtml"></div>
+                <button (click)="goBack()" class="btn btn-link">Back</button>
+            </div>
+        </div>
+    </div>
+</div>

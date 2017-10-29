@@ -1,0 +1,32 @@
+<div class="container" *ngIf="post">
+    <div class="row">
+        <div class="col-sm-12 blog-main">
+            <div class="blog-post">
+                <h2 class="blog-post-title">{{post.title}}</h2>
+
+                <p class="blog-post-meta">{{post.dateUpdated | date: 'longDate'}} by
+                    <a href="#">{{post.userName}}</a>
+                    <span *ngIf="canModify | async">
+                        <a [routerLink]="['/post', post.id, 'edit']" class="btn btn-primary btn-xs" title="Edit">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </a>
+                        <button type="button" class="btn btn-success btn-xs" title="Publish" *ngIf="!post.isPublished" (click)="confirmPublishing(); $event.stopPropagation()">
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </button>
+                        <button type="button" class="btn btn-danger btn-xs" title="Delete" (click)="confirmDeleting(); $event.stopPropagation()">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+                    </span>
+                </p>
+
+                <!--TODO: consider to show the image on detail page <div *ngIf="post.imageUrl">
+                    <img src="{{post.imageUrl}}" class="img-responsive">
+                </div> -->
+
+                <div [innerHtml]="post.content| keepHtml"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-comment-box [post]="post"></app-comment-box>

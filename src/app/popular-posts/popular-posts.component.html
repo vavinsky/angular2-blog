@@ -1,0 +1,27 @@
+<div class="sidebar-module">
+    <h2 class="title-widget-sidebar">POPULAR POSTS</h2>
+    <div class="content-widget-sidebar">
+        <img *ngIf="loading" src="assets/images/spinner.jpg" />
+
+        <ul *ngFor="let post of posts | slice:0:5">
+            <li class="recent-post">
+                <div class="post-img" *ngIf="post.imageUrl">
+                    <a [routerLink]="['/post', post.id]">
+                        <img src="{{post.imageUrl}}" class="img-responsive">
+                    </a>
+                </div>
+                <a [routerLink]="['/post', post.id]">
+                    <h5>{{post.excerpt}}</h5>
+                </a>
+                <p>
+                    <small>
+                        <i class="glyphicon glyphicon-calendar" data-original-title="" title=""></i> {{post.dateUpdated | date:'dd MMMM y'}}
+                        <span class="pull-right">
+                            <span class="glyphicon glyphicon-comment"></span> {{post.commentsCount}}</span>
+                    </small>
+                </p>
+            </li>
+            <hr>
+        </ul>
+    </div>
+</div>

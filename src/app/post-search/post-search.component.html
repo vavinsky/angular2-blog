@@ -1,0 +1,20 @@
+<div class="container">
+  <div class='row'>
+    <div class="col-sm-8 blog-main">
+      <div id="search-component" class="form-group">
+        <input #searchBox id="search-box" class="form-control" [formControl]="searchBoxControl" placeholder="Enter post title" autofocus/>
+        <img *ngIf="loading" src="assets/images/spinner.jpg" />
+        <div *ngIf="posts | async; let posts;">
+          <div *ngFor="let post of posts | slice:0:10" class="search-result">
+            <app-post-excerpt [post]="post"></app-post-excerpt>
+          </div>
+          <div *ngIf="showNoResults">No results found.</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3 offset-sm-1 blog-sidebar">
+      <app-popular-tags></app-popular-tags>
+      <app-popular-posts></app-popular-posts>
+    </div>
+  </div>
+</div>

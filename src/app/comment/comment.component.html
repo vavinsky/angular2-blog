@@ -1,0 +1,17 @@
+<div class="media comment-box">
+  <div class="media-left">
+    <a [routerLink]="['/profile', comment.username]">
+      <img class="img-responsive user-photo" src="{{comment.avatarImageUrl? comment.avatarImageUrl : 'assets/images/default-avatar.png'}}">
+    </a>
+  </div>
+  <div class="media-body">
+    <div class="media-heading">{{comment.username}} {{comment.datePublished | date:'longDate'}}
+      <button *ngIf="canModify | async" type="button" class="btn btn-danger btn-xs" title="Delete" (click)="confirmDeleting()">
+        <span class="glyphicon glyphicon-trash"></span>
+      </button>
+      <span class="pull-right">
+        <span class="glyphicon glyphicon-thumbs-up"></span> 0</span>
+    </div>
+    <p>{{comment.text}}</p>
+  </div>
+</div>

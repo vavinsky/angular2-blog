@@ -1,0 +1,21 @@
+<div class="container">
+  <div class='row'>
+    <div class="col-sm-8 blog-main">
+      <img *ngIf="loading" src="assets/images/spinner.jpg" />
+      <a [routerLink]="['/post/add']" class="btn btn-default pull-right">New Post</a>
+      <div *ngFor="let post of posts">
+        <app-post-excerpt [post]="post" (postDeleted)="onPostDeleted($event)"></app-post-excerpt>
+      </div>
+      <div *ngIf="!loading && !posts">
+        There are no posts found.
+      </div>
+      <app-blog-pagination *ngIf="posts && posts.length > 0"></app-blog-pagination>
+    </div>
+    <div class="col-sm-4 offset-sm-1 blog-sidebar">
+      <app-about-sidebar></app-about-sidebar>
+      <app-popular-tags></app-popular-tags>
+      <app-popular-posts></app-popular-posts>
+      <app-newslatter-sidebar></app-newslatter-sidebar>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="container">
+  <h3>Tags</h3>
+  <div class='row'>
+    <div *ngFor="let tag of tags" class="col-sm-3">
+      <a [routerLink]="['/posts/tag', tag.name]" class="btn btn-success" href="javascript:void(0)">
+        {{tag.name}}
+      </a>
+      <span class="item-multiplier">
+        <span class="item-multiplier-x">×</span>&nbsp;
+        <span class="item-multiplier-count">{{tag.postCount}}</span>
+      </span>
+      <div class="excerpt" [innerHTML]="tag.excerpt | keepHtml">
+      </div>
+    </div>
+  </div>
+</div>

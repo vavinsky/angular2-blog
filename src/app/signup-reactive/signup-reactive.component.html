@@ -1,0 +1,123 @@
+<div class="container" *ngIf="visible">
+  <div class="col-md-6 col-md-offset-3">
+    
+    <h3>Sign Up</h3>
+
+    <form name="form" [formGroup]="signupForm" (ngSubmit)="onSignUp()" novalidate>
+      <div class="form-group required" [ngClass]="getControlClass('username')">
+        <label for="username" class="control-label">Username</label>
+        <input id="username" name="username" type="text" class="form-control" formControlName="username" autofocus placeholder="Enter Login"/>
+  
+        <div *ngIf="isControlInvalid('username')" class="text-danger">
+          <div *ngIf="username.hasError('required')">
+            Username is required
+          </div>
+          <div *ngIf="username.hasError('maxlength')">
+            Username must be less then 256 characters long.
+          </div>
+          <div *ngIf="username.hasError('minlength')">
+              Username must be at least 5 characters long.
+          </div>
+          <div *ngIf="username.hasError('userNameDuplicate')">
+            The provided username already exists. Please choose another username.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group required" [ngClass]="getControlClass('email')">
+        <label for="email" class="control-label">Email</label>
+        <input id="email" name="email" type="text" class="form-control" formControlName="email" placeholder="Enter your e-mail address"/>
+  
+        <div *ngIf="isControlInvalid('email')" class="text-danger">
+          
+          <div *ngIf="email.hasError('required')">
+            Email is required
+          </div>
+          <div *ngIf="email.hasError('maxlength')">
+            Email must be less then 256 characters long.
+          </div>
+          <div *ngIf="email.hasError('pattern')">
+              Not a valid Email provided
+          </div>
+          <div *ngIf="email.hasError('emailDuplicate')">
+            The provided email already exists. Please choose another email.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group required" [ngClass]="getControlClass('firstName')">
+        <label for="firstName" class="control-label">First Name</label>
+        <input id="firstName" name="firstName" type="text" class="form-control" formControlName="firstName" placeholder="Enter your first name"/>
+  
+        <div *ngIf="isControlInvalid('firstName')" class="text-danger">
+          <div *ngIf="firstName.hasError('required')">
+            Firs tName is required
+          </div>
+          <div *ngIf="firstName.hasError('maxlength')">
+            First name must be less then 256 characters long.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group required" [ngClass]="getControlClass('lastName')">
+        <label for="lastName" class="control-label">Last Name</label>
+        <input id="lastName" name="lastName" type="text" class="form-control" formControlName="lastName" placeholder="Enter your last name"/>
+  
+        <div *ngIf="isControlInvalid('lastName')" class="text-danger">
+          <div *ngIf="lastName.hasError('required')">
+            Firs tName is required
+          </div>
+          <div *ngIf="lastName.hasError('maxlength')">
+            First name must be less then 256 characters long.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group required" [ngClass]="getControlClass('password')">
+        <label for="password" class="control-label">Password</label>
+        <input id="password" name="password" type="password" class="form-control" formControlName="password" placeholder="Enter the password"/>
+
+        <div *ngIf="isControlInvalid('password')" class="text-danger">
+          <div *ngIf="password.hasError('required')">
+            Password is required
+          </div>
+          <div *ngIf="password.hasError('maxlength')">
+            Password must be less then 20 characters long.
+          </div>
+          <div *ngIf="password.hasError('pattern')">
+            Password must contain:
+            <ol>
+              <li>Upper case latter</li>
+              <li>Lower case latter</li>
+              <li>Numbers</li>
+              <li>Non-alpha symbols</li>
+              <li>8 characters long</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group required" [ngClass]="getControlClass('confirmPassword')">
+        <label for="confirmPassword" class="control-label">Confirm password</label>
+        <input id="confirmPassword" name="confirmPassword" type="password" class="form-control" formControlName="confirmPassword" placeholder="Confirm the password"/>
+
+        <div *ngIf="isControlInvalid('confirmPassword')" class="text-danger">
+          <div *ngIf="confirmPassword.hasError('required')">
+            Confirm password field is required
+          </div>
+          <div *ngIf="confirmPassword.hasError('passwordMismatch')">
+            Password mismatch
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button [disabled]="loading" class="btn btn-default" type="submit">Submit</button>
+        <img *ngIf="loading" src="assets/images/spinner.jpg" />
+        <button (click)="goBack()" class="btn btn-link">Cancel</button>
+      </div>
+
+    </form>
+
+  </div>
+</div>

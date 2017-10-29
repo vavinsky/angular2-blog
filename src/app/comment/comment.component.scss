@@ -1,0 +1,28 @@
+.comment-box .media-left {
+  padding-right: 10px;
+  width: 65px;
+}
+.comment-box .media-body p {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+.comment-box .media-body .media p {
+  margin-bottom: 0;
+}
+.comment-box .media-heading {
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  padding: 7px 10px;
+  position: relative;
+  margin-bottom: -1px;
+}
+
+.user-photo {
+  max-width: inherit;
+
+  display: inline-block;
+  vertical-align: middle;
+  height: 30px;
+  width: 30px;
+  border-radius: 30px;
+}

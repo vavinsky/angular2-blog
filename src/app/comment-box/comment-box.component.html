@@ -1,0 +1,41 @@
+<div class="container comments" *ngIf="post">
+    <div class="row">
+        <form name="addComment" (ngSubmit)="addComment()" novalidate *ngIf="canAddComment | async">
+            <div class="form-group required" [ngClass]="{'has-error': isControlInvalid()}">
+                <label for="comment" class="control-label">Your Comment</label>
+                <textarea id="comment" name="comment" class="form-control" type="text" rows="3" [formControl]="commentControl" placeholder="Enter your comment hare">
+                </textarea>
+
+                <div *ngIf="isControlInvalid()" class="text-danger">
+                    <div *ngIf="commentControl.errors.required">
+                        Comment is required
+                    </div>
+                    <div *ngIf="commentControl.errors.maxlength">
+                        Comment must be less then 1024 characters long.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button [disabled]="loading" class="btn btn-default" type="submit">Post Comment</button>
+                <img *ngIf="loading" src="assets/images/spinner.jpg" />
+            </div>
+        </form>
+
+        <div class="container" *ngIf="!(canAddComment | async)">
+            <div class="row needLoginMessage">
+                <div class="col-md-8 offset-md-2">
+                    <a [routerLink]="['/signin']">Sing in</a> or
+                    <a [routerLink]="['/signup']">sign up</a> to add comments on this article.
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <h3 *ngIf="commentCount > 0">Comments</h3>
+                <app-comment *ngFor="let comment of comments" [comment]="comment" (deleteComment)="onDeleteComment(comment)">
+                </app-comment>
+            </div>
+        </div>
+    </div>
+</div>

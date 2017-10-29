@@ -1,0 +1,8 @@
+<div class="sidebar-module">
+  <h2 class="title-widget-sidebar">POPULAR TAGS</h2>
+  <span *ngFor="let tag of tags">
+    <a [routerLink]="['/posts/tag', tag.name]" class="btn btn-outline-primary">
+      {{tag.name}} <small>× {{tag.postCount}}</small>
+    </a>
+  </span>
+</div>

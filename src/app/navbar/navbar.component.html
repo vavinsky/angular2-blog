@@ -1,0 +1,100 @@
+<nav class="navbar navbar-default navbar-fixed-top ">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+        aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" routerLink="/">Brogrammers Blog</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active">
+          <a routerLink="/posts">Posts</a>
+        </li>
+        <!-- TODO: add tags page <li routerLinkActive="active"><a routerLink="/tags">Tags</a></li> -->
+        <li routerLinkActive="active" *authenticated>
+          <a routerLink="/my-posts">My Posts</a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Actions
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a [routerLink]="['/post/add']">New post</a>
+            </li>
+            <li role="separator" class="divider"></li>
+            <!-- <li class="dropdown-header">Nav header</li>
+            <li><a href="#">Separated link</a></li>
+            <li><a href="#">One more separated link</a></li> -->
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <app-search></app-search>
+        <li class="dropdown" *ngIf="currentUser">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <img class="user-avatar" *ngIf="currentUser.avatarImageUrl" src="{{currentUser.avatarImageUrl}}" />{{currentUser.username}}
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="/user/preferences">
+                <i class="icon-cog"></i> Preferences</a>
+            </li>
+            <li>
+              <a href="/help/support">
+                <i class="icon-envelope"></i> Contact Support</a>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a (click)="logout()" href="javaSript:void;">
+                <i class="icon-off"></i> Logout</a>
+            </li>
+          </ul>
+        </li>
+        <li *ngIf="!currentUser">
+          <a routerLink="/signup">
+            <span class="glyphicon glyphicon-user"></span> Sign Up</a>
+        </li>
+        <li class="dropdown" *authenticated="false">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <span class="glyphicon glyphicon-log-in"></span> Sign In
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu" id="singInDropDown" style="padding: 15px;min-width: 250px;">
+            <li>
+              <div class="row">
+                <div class="col-md-12">
+                  <form class="form" role="form" method="post" action="login" [formGroup]="signinForm" accept-charset="UTF-8" id="login-nav"
+                    (ngSubmit)="onSignIn()">
+                    <div class="form-group">
+                      <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                      <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Username" required="" formControlName="username">
+                    </div>
+                    <div class="form-group">
+                      <label class="sr-only" for="exampleInputPassword2">Password</label>
+                      <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required="" formControlName="password">
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" formControlName="rememberMe"> Remember me
+                      </label>
+                      <img *ngIf="loading" src="assets/images/spinner.jpg" />
+                    </div>
+                    <div class="form-group">
+                      <button type="submit" class="btn btn-success btn-block">Sign in</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+          </ul>
+          </li>
+      </ul>
+    </div>
+  </div>
+</nav>
