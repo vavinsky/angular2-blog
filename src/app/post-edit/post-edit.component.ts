@@ -70,6 +70,8 @@ export class PostEditComponent implements OnInit {
           }
         });
     }
+
+    this.subscribeOnPostDeleted();
   }
 
   prepareSavePost(): Post {
@@ -216,6 +218,15 @@ export class PostEditComponent implements OnInit {
             this.alertService.error(err.body.error, true);
             this.router.navigate(['/']);
           }
+        }
+      });
+  }
+
+  private subscribeOnPostDeleted() {
+    this.postService.postDeleted$
+      .subscribe(id => {
+        if (this.post && this.post.id === id) {
+          this.router.navigate(['/']);
         }
       });
   }

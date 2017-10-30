@@ -1,0 +1,17 @@
+<p class="blog-post-meta" *ngIf="post">
+  <span *ngIf="!post.isPublished">Edited at {{post.dateUpdated | date:'longDate'}} by {{post.userName}}</span>
+  <span *ngIf="post.datePublished && post.isPublished">{{post.datePublished | date:'longDate'}} by {{post.userName}}</span>
+  <span *ngIf="canModify | async">
+      <a [routerLink]="['/post', post.id, 'edit']" class="btn btn-primary btn-xs" title="Edit">
+          <span class="glyphicon glyphicon-pencil"></span>
+      </a>
+      <button type="button" class="btn btn-success btn-xs" title="Publish" *ngIf="!post.isPublished" (click)="confirmPublishing(); $event.stopPropagation()">
+          <span class="glyphicon glyphicon-ok"></span>
+      </button>
+      <button type="button" class="btn btn-danger btn-xs" title="Delete" (click)="confirmDeleting(); $event.stopPropagation()">
+          <span class="glyphicon glyphicon-trash"></span>
+      </button>
+  </span>
+  <span class="pull-right">
+      <span class="glyphicon glyphicon-comment"></span> {{post.commentsCount}} Comment(s)</span>
+</p>

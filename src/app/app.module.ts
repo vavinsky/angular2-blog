@@ -52,6 +52,7 @@ import { CommentComponent } from './comment/comment.component';
 import { CommentBoxComponent } from './comment-box/comment-box.component';
 import { AuthenticatedDirective } from './shared/authenticated.directive';
 import { SignupReactiveComponent } from './signup-reactive/signup-reactive.component';
+import { PostMetaComponent } from './post-meta/post-meta.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +85,7 @@ import { SignupReactiveComponent } from './signup-reactive/signup-reactive.compo
     CommentBoxComponent,
     AuthenticatedDirective,
     SignupReactiveComponent,
+    PostMetaComponent,
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,7 @@
 
     <h2 *ngIf="isEditing">Edit a Post</h2>
     <h2 *ngIf="!isEditing">Add a Post</h2>
+    <app-post-meta *ngIf="isEditing" [post]="post"></app-post-meta>
 
     <form name="form" [formGroup]="form" (ngSubmit)="save()" novalidate>
       <div class="form-group required" [ngClass]="getControlClass('title')">

@@ -4,7 +4,7 @@
       <img *ngIf="loading" src="assets/images/spinner.jpg" />
       <a [routerLink]="['/post/add']" class="btn btn-default pull-right">New Post</a>
       <div *ngFor="let post of posts">
-        <app-post-excerpt [post]="post" (postDeleted)="onPostDeleted($event)"></app-post-excerpt>
+        <app-post-excerpt [post]="post"></app-post-excerpt>
       </div>
       <div *ngIf="!loading && !posts">
         There are no posts found.
@@ -15,7 +15,6 @@
       <app-about-sidebar></app-about-sidebar>
       <app-popular-tags></app-popular-tags>
       <app-popular-posts></app-popular-posts>
-      <app-newslatter-sidebar></app-newslatter-sidebar>
     </div>
   </div>
 </div>

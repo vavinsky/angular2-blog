@@ -64,4 +64,18 @@
     content: '';
     padding-bottom: 10px;
   }
+
+  // blog-post
+  .blog-post {
+    margin-bottom: 1rem;
+  }
+  .blog-post-title {
+    margin-bottom: .25rem;
+    font-size: 2rem;
+  }
+  @media (min-width: 40em) {
+    .blog-post-title {
+      font-size: 2.5rem;
+    }
+  }
   

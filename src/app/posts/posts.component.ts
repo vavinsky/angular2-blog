@@ -33,6 +33,9 @@ export class PostsComponent implements OnInit {
         this.currentUser = user;
         this.populatePosts(this.showCurrentUserPosts);
       });
+
+      this.postService.postDeleted$
+        .subscribe(id => this.posts = this.posts.filter(p => p.id !== id));
   }
 
   private populatePosts(showCurrentUserPosts: boolean): void {
@@ -49,9 +52,5 @@ export class PostsComponent implements OnInit {
       this.posts = posts;
       this.loading = false;
     });
-  }
-
-  onPostDeleted(id: number) {
-    this.posts = this.posts.filter(p => p.id !== id);
   }
 }

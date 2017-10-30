@@ -50,6 +50,9 @@ export class PostSearchComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.postService.postDeleted$
+      .subscribe(id => this.searchBoxControl.setValue(null));
+
     this.subscribeToSearchBoxChanges();
     this.subscribeToRouteChanges();
   }

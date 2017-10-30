@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/retry';
 import 'rxjs/add/operator/catch';
@@ -19,6 +20,9 @@ export class PostService {
   private postsUrl = 'api/posts';
   private tagsUrl = 'api/tags';
 
+  private postDeleted = new Subject<number>();
+  postDeleted$ = this.postDeleted.asObservable();
+  
   constructor(
     private httpClient: HttpClient,
     private router: Router,
@@ -84,6 +88,7 @@ export class PostService {
     const url = `${this.postsUrl}/${id}`;
     return this.httpClient.delete(url, cudOptions)
       .toPromise()
+      .then(() => this.postDeleted.next(id))
       .catch(this.handleError);
   }
 
