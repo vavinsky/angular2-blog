@@ -37,7 +37,6 @@ import { PopularPostsComponent } from './popular-posts/popular-posts.component';
 import { BlogPaginationComponent } from './blog-pagination/blog-pagination.component';
 import { PostComponent } from './post/post.component';
 import { PopularTagsComponent } from './popular-tags/popular-tags.component';
-import { TaggedPostsComponent } from './tagged-posts/tagged-posts.component';
 import { TagComponent } from './tag/tag.component';
 import { AlertComponent } from './shared/alert/alert.component';
 import { RegisterComponent } from './register/register.component';
@@ -68,7 +67,6 @@ import { PostMetaComponent } from './post-meta/post-meta.component';
     BlogPaginationComponent,
     PostComponent,
     PopularTagsComponent,
-    TaggedPostsComponent,
     TagComponent,
     AlertComponent,
     RegisterComponent,

@@ -11,7 +11,6 @@ import { SigninReactiveComponent } from './signin-reactive/signin-reactive.compo
 import { SigninComponent } from './signin/signin.component';
 import { RegisterComponent } from './register/register.component';
 import { PostsComponent } from './posts/posts.component';
-import { TaggedPostsComponent } from './tagged-posts/tagged-posts.component';
 import { PostComponent } from './post/post.component';
 import { TagsComponent } from './tags/tags.component';
 import { TagComponent } from './tag/tag.component';
@@ -21,7 +20,7 @@ const routes: Routes = [
   { path: 'my-posts',  component: PostsComponent, canActivate: [AuthenticationGuard], data: {currentUserPosts: true} },
   { path: 'posts',  component: PostsComponent },
   { path: 'post/add', component: PostEditComponent, canActivate: [AuthenticationGuard] },
-  { path: 'posts/tag/:tag',  component: TaggedPostsComponent },
+  { path: 'posts/tag/:tag',  component: PostsComponent, data: {showPostsByTag: true} },
   { path: 'post/:id/edit', component: PostEditComponent, canActivate: [AuthenticationGuard] },
   { path: 'post/:id', component: PostComponent },
   { path: 'tags', component: TagsComponent, canActivate: [AuthenticationGuard] },
