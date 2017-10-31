@@ -1,5 +1,9 @@
 # BlogApp
 
+This is blog app. Here is how it looks like https://vavinsky.github.io. Please. use the "admin" username and "admin" password to sing in.
+The in-memory-web-api packages has been used to play the backend server role. So, after page is refreshed all changes will be lost. 
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.5.
 
 ## Development server
